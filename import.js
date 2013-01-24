@@ -1,3 +1,13 @@
+/**
+* @desc nodejs 动态模块更新  nodejs dynamic module exchange, reloader and auto - namespace-generation
+* var loader = require('./import');
+* loader.require( path) // 导出文件对象，根据路径并且生成命名空间
+* loader.wacth( dirname ， true) //监听文件夹变化，并且生成或改变命名空间
+* loader.scan(dirname , options) //递归扫描文件夹及子文件夹，返回所有文件，并且可选择监控所有文件，并自动生成命名空间
+* @author liandong.org
+* @email liu@liandong.org
+*/
+
 var fs = require('fs');
 var me = {};
 
@@ -82,11 +92,6 @@ me.watch = function(file, recall, namespace) {
                 var obj = namespace ? me.require(abs) : require(abs);
                 recall && recall(obj, abs);
             }
-            //console.log(obj);
-        }
-        else
-        if (odd && filename) {
-            console.log(filename);
         }
     })
 }
